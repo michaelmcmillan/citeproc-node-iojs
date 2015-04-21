@@ -1,0 +1,14 @@
+{
+  "name": "citeproc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "citeproc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael McMillan <email@michaelmcmillan.net> (http://michaelmcmillan.net/)",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^5.0.1"
+  }
+}
