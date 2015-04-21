@@ -8,9 +8,10 @@ describe('citeproc-js', function () {
         this.timeout(3000);
 
         var style  = './styles/chicago-fullnote-bibliography.csl';
-        var locale = './locales/locales-en-US.xml';
+        var locale = './locales/locales-nb-NO.xml';
 
         var cite = new Citeproc(citations, style, locale, function (citeproc) {
+            citeproc.updateItems(Object.keys(citations));
             var bibliography = citeproc.makeBibliography();
             console.log(bibliography);
             done();

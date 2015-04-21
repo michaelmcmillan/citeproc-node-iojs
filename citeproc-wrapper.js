@@ -11,7 +11,6 @@ function Citeproc (citations, styleLocation, localeLocation, done) {
             self.loadLocale(localeLocation, function () {
                 self.setupSys();
                 citeproc = new CSL.Engine(sys, style);
-                citeproc.updateItems(Object.keys(citations));
                 done(citeproc);
             });
         });
