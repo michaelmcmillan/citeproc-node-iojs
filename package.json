@@ -1,8 +1,12 @@
 {
   "name": "citeproc",
   "version": "1.0.0",
-  "description": "",
-  "main": "citeproc.js",
+  "description": "A wrapper for citeproc-js.",
+  "main": "citeproc-wrapper.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/michaelmcmillan/citeproc-node-iojs.git"
+  },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/*.js"
   },
