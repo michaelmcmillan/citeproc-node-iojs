@@ -1,7 +1,7 @@
 var fs        = require('fs');
 var CSL       = require('./src/citeproc.js').CSL;
 
-function Citeproc (styleLocation, localeLocation, done) {
+function Citeproc (citations, styleLocation, localeLocation, done) {
     
     // Constructs the wrapper
     this.construct = function () {
@@ -11,7 +11,8 @@ function Citeproc (styleLocation, localeLocation, done) {
             self.loadLocale(localeLocation, function () {
                 self.setupSys();
                 citeproc = new CSL.Engine(sys, style);
-                done();
+                citeproc.updateItems(Object.keys(citations));
+                done(citeproc);
             });
         });
     }
@@ -26,15 +27,10 @@ function Citeproc (styleLocation, localeLocation, done) {
     var style;
     
     // All the added references which will be formatted
-    var citations = [];
+    var citations = citations;
     
     // Holds the content of a locales-*-*.xml file
     var locale;
-
-    // Setter for citation array
-    this.setCitations = function (addedCitations) {
-        citations = addedCitations;
-    }
 
     // Rigs up the sys object for the internal citeproc
     this.setupSys = function () {
@@ -46,13 +42,6 @@ function Citeproc (styleLocation, localeLocation, done) {
                 return citations[id];
              }
         };
-    }
-
-    // Generates and returns the bibliography 
-    this.makeBibliography = function () {
-        citeproc = new CSL.Engine(sys, style);
-        citeproc.updateItems(['Item-1','Item-2','Item-3','Item-4']);
-        return citeproc.makeBibliography();
     }
 
     this.loadLocale = function (file, done) {
