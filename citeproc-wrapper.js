@@ -1,5 +1,5 @@
-var fs        = require('fs');
-var CSL       = require('./src/citeproc.js').CSL;
+var fs  = require('fs');
+var CSL = require('./src/citeproc.js').CSL;
 
 function Citeproc (citations, styleLocation, localeLocation, done) {
     
