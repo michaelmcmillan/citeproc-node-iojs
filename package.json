@@ -4,11 +4,14 @@
   "description": "",
   "main": "citeproc.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha test/*.js"
   },
   "author": "Michael McMillan <email@michaelmcmillan.net> (http://michaelmcmillan.net/)",
   "license": "ISC",
   "dependencies": {
     "jsdom": "^5.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4"
   }
 }

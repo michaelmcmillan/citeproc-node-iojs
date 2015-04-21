@@ -1,21 +1,28 @@
 var fs        = require('fs');
+var assert    = require('assert');
 var CSL       = require('../src/citeproc.js').CSL;
 var citations = require('./citations.json');
 
-var sys = {
-    retrieveLocale: function (lang) {
-        return fs.readFileSync('./locales/locales-en-US.xml').toString();
-    },
+describe('citeproc-js', function () {
+    
+    it('should parse a JSON object to a correct bibliography', function () {
 
-    retrieveItem: function (id) {
-        return citations[id];
-    }
-}
+        var sys = {
+            retrieveLocale: function (lang) {
+                return fs.readFileSync('./locales/locales-en-US.xml').toString();
+            },
 
-var xml = fs.readFileSync('./styles/chicago-fullnote-bibliography.csl').toString();
-var citeproc = new CSL.Engine(sys, xml);
+            retrieveItem: function (id) {
+                return citations[id];
+            }
+        }
 
-citeproc.updateItems(['Item-1','Item-2','Item-3','Item-4']);
-var result = citeproc.makeBibliography();
+        var xml = fs.readFileSync('./styles/chicago-fullnote-bibliography.csl').toString();
+        var citeproc = new CSL.Engine(sys, xml);
 
-console.log(result[1].join('\n'));
+        citeproc.updateItems(['Item-1','Item-2','Item-3','Item-4']);
+        var result = citeproc.makeBibliography();
+        
+        assert.equal(result[1].join('\n').length > 100, true);
+    });
+});
