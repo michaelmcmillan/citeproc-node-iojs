@@ -13023,7 +13023,9 @@ CSL.Output.Formats.prototype.html = {
         if (state.sys.embedBibliographyEntry) {
             insert = state.sys.embedBibliographyEntry(this.item_id) + "\n";
         }
-        return "  <div data-item-id=\"" + this.system_id + "\" class=\"csl-entry\">" + str + "</div>\n" + insert;
+
+        var removeBtn = "<div class=\"manage\"><button name=\"remove\" value=\"" + this.system_id + "\"></div>";
+        return "<div data-item-id=\"" + this.system_id + "\" class=\"csl-entry\">" + removeBtn + str + "</div>\n" + insert;
     },
     "@display/block": function (state, str) {
         return "\n\n    <div class=\"csl-block\">" + str + "</div>\n";
