@@ -1,4 +1,8 @@
-# citeproc-node-iojs
+# citeproc-node-iojs (LittList)
+Please not that this is the LittList version. It includes changes to citeproc-js
+that makes it easier to implement for what I need citeproc for. Please do not use
+this branch unless you appreciate my changes.
+
 A working citeproc-js wrapper for node and iojs.
 
 To download the styles and languages required for this module to work, run the following:
