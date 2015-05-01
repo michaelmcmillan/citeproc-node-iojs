@@ -13024,7 +13024,7 @@ CSL.Output.Formats.prototype.html = {
             insert = state.sys.embedBibliographyEntry(this.item_id) + "\n";
         }
 
-        var removeBtn = "<div class=\"manage\"><button name=\"remove\" value=\"" + this.system_id + "\">Fjern</button></div>";
+        var removeBtn = "<div class=\"manage\"><input type=\"checkbox\" name=\"remove\" value=\"" + this.system_id + "\" /></div>";
         return "<div class=\"csl-entry\">" + removeBtn + str + "</div>\n" + insert;
     },
     "@display/block": function (state, str) {
