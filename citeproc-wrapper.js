@@ -7,11 +7,13 @@ function Citeproc (citations, styleLocation, localeLocation, done) {
     this.construct = function () {
         var self = this;
 
-        self.loadStyle(styleLocation, function () {
-            self.loadLocale(localeLocation, function () {
+        self.loadStyle(styleLocation, function (err) {
+            if (err) return done(err);
+            self.loadLocale(localeLocation, function (err) {
+                if (err) return done(err);
                 self.setupSys();
                 citeproc = new CSL.Engine(sys, style);
-                done(citeproc);
+                done(null, citeproc);
             });
         });
     }
