@@ -342,7 +342,7 @@ var CSL_NODEJS_JSDOM = function () {
     this.parser = new DOMParser();
     // This seems horribly tormented, but there might be a reason for it.
     // Perhaps this was the only way I found to get namespacing to work ... ?
-    var str = "<docco><institution institution-parts=\"long\" delimiter=\", \" substitute-use-first=\"1\" use-last=\"1\"><institution-part name=\"long\"></institution></docco>";
+    var str = "<docco><institution institution-parts=\"long\" delimiter=\", \" substitute-use-first=\"1\" use-last=\"1\"><institution-part name=\"long\"/></institution></docco>";
     var inst_doc = this.parser.parseFromString(str, "text/xml");
     var inst_node = inst_doc.getElementsByTagName("institution");
     this.institution = inst_node.item(0);
